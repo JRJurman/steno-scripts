@@ -6,10 +6,12 @@
 // it is a modififcation of the phrase-parser.js
 
 const fs = require('fs')
+const path = require('path')
 const { entryIsFingerspelling } = require('./dictionary-filters')
 
 const dictionaryToTest =  process.argv[2]
-const dictionary = require(dictionaryToTest)
+const dictionaryPath = path.join(process.cwd(), process.argv[2])
+const dictionary = require(dictionaryPath)
 
 const fingerSpellings = Object.entries(dictionary)
 	.filter(entryIsFingerspelling)

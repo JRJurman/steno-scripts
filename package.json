@@ -1,12 +1,11 @@
 {
   "name": "steno-scripts",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A set of scripts for processing dictionaries (and other steno adjacent files)",
-	"bind": {
-		"test-fingerspellings": "test-fingerspellings.js"
-	},
-  "scripts": {
+  "bin": {
+    "test-fingerspellings": "test-fingerspellings.js"
   },
+  "scripts": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/JRJurman/steno-scripts.git"
