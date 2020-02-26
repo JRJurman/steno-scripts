@@ -1,3 +1,5 @@
+#! /usr/bin/env node
+
 // Notes on how to easily update this keyboard
 // 1. use the ORYX configuration tool to setup a layout that you like
 // 2. copy the layout into this script

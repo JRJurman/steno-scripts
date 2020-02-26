@@ -1,21 +1,16 @@
+#! /usr/bin/env node
+
 // this file parses a dictionary, and creates 2 new json files
 // one that is all the fingerspellings (e.g. every stroke is a single letter)
 // and one that is the fingersepllings stripped out.
 // it is a modififcation of the phrase-parser.js
-// TODO common functions will probably be put in their own file.
-
 
 const fs = require('fs')
+const { entryIsFingerspelling } = require('./dictionary-filters')
 const main = require('./top-10000-project-gutenberg-words')
 
-const numberOfStrokes = chord => chord.split('/').length
-const numberOfLetters = translation => translation.length
-const numberOfStrokesMatchesNumberOfLetters = ([chord, translation]) => numberOfStrokes(chord) === numberOfLetters(translation)
-const everyStrokeHasAStar = ([chord, translation]) => chord.split('/').every(stroke => stroke.match(/.*\*.*/))
-
 const fingerSpellings = Object.entries(main)
-	.filter(everyStrokeHasAStar)
-	.filter(numberOfStrokesMatchesNumberOfLetters)
+	.filter(entryIsFingerspelling)
 
 const fingerSpellingsObject = Object.fromEntries(fingerSpellings)
 

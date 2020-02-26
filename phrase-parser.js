@@ -1,3 +1,5 @@
+#! /usr/bin/env node
+
 // this script parses a dictionary file and generates a
 // text file with each phrase (that is, single stroke -> many words)
 // the text file is in a format that is friendly for typey-type
@@ -5,12 +7,7 @@
 
 const fs = require('fs')
 const main = require('./main')
-
-// filter for translations that have spaces
-const entryHasSpaces = ([chord, translation]) => translation.match(/.*\s.*/)
-
-// single stroke
-const chordHasSingleStroke = ([chord, translation]) => chord.match(/^[^\/]*$/)
+const { entryHasSpaces, chordHasSingleStroke } = require('./dictionary-filters')
 
 // map from entry to string
 const entryToString = ([chord, translation]) => `${translation}\t${chord}`
